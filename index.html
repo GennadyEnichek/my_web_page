@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=html_card, initial-scale=1.0">
+        <link href="assets\css\style.css" rel="stylesheet">
+        <title>GJ card</title>
+    </head>
+    <body>
+        <header>
+            <h1>Gennady Enichek</h1>
+            <p>
+                <div class="contacts">
+                    <a href="https://www.linkedin.com/in/gennady-enichek" target="_blank"><img class="icon" src="assets\img\linkedin_icon.png" alt="LinkedIn"></a>
+                    <a href="https://www.linkedin.com/in/gennady-enichek" target="_blank">My LinkedIn</a>
+                </div>
+                <div class="contacts">
+                    e-mail:<a href="mailto:gennady.enichek@gmail.com">gennady.enichek@gmail.com</a>
+                </div>
+            </p>
+        </header>
+  
+        <div class="flex-container">
+            <div class="skills">
+                <div>
+                    <h3>My Interests</h3>
+                    <ul>
+                        <li>DevOps</li>
+                        <li>Clouds</li>
+                        <li>Process automation</li>
+                        <li>Cryptocurrency</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="skills">
+                <div>
+                    <h3>my skills</h3>
+                    <ul>
+                        <li>python</li>
+                        <li>bash</li>
+                        <li>AWS</li>
+                        <li>terraform</li>
+                        <li>git</li>
+                        <li>git hub actions</li>
+                        <li>Linux/Windows</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="skills">
+                <div>
+                <h3>my soft skills</h3>
+                    <ul>
+                        <li>Curiosity</li>
+                        <li>Concentration</li>
+                        <li>Continuous learning</li>
+                        <li>Constructive communication</li>
+                        <li>Problem-solving</li>
+                        <li>Stress management</li>
+                        <li>Cultural sensitivity</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <hr>
+        <div>
+            <p style="text-align: center;">I highly motivated to become true DevOps Engineer.</p>
+            <p class="cv">You can download my CV here: <a href="assets\doc\Gennady_Enichek_CV.pdf" target="_blank">CV</a></p>
+        </div>
+        <hr>
+        <hr>
+
+        <div class="projects">
+            <h2 style="margin-left: 5%;">My Real Life Project <span style="font-size: medium;">(Original text was reviewed with ChatGPT)</span></h2>
+            <p style="text-indent: 1.5em;">
+                <b>Description of the problem.</b> In the field of ventilation, it is common practice to establish defined air volumes for each 
+                area. Specialized units known as VAV dampers are used to regulate airflow. In order to be competitive, manufacturers 
+                must ensure precise measurement and regulation of airflows by these dampers . To achieve this goal, there are laboratory stands 
+                capable of providing precise airflow measurements. However, problems arise when these measurements are conducted manually by 
+                operators, as ventilation equipment is designed to be highly inert to minimize fluctuations. As a result, measurements often 
+                consume considerable time and human resources.
+            </p>
+            <p style="text-indent: 1.5em;">
+                <b>Decision.</b> A Python program has been developed to automate measurements, thereby freeing operators to perform other daily 
+                tasks. The program features a Graphical User Interface (GUI) that enables operators to manage PC communication with the stand
+                hardware, control delays between measurement cycles, load measurement programs for automatic execution, and save measurement data 
+                to an Excel file. Additionally, an emergency stop function has been implemented. Communication between the stand hardware and PC 
+                is achieved through a serial COM port using the Modbus RTU protocol, an industry-standard protocol. To ensure smooth operation, 
+                the program utilizes separate threads for the GUI section and the measurement (communication) section, due to the necessity for 
+                regular communication between the PC and stand hardware. Furthermore, the program offers the option to activate email 
+                notifications upon completion of measurements or in the event of errors, thus relieving operators from the need for constant 
+                process monitoring. Considering the existence of multiple laboratory stands, the program is configurable for use with other
+                equipment with the same structure.
+            </p>
+        </div>
+
+        <hr>
+
+        <div>
+            <h2 style="text-align: center;">Certificates</h2>
+            <div class="flex-container">
+                <div class="certificate">
+                    <p>AWS Cloud Practitioner</p>
+                    <p>
+                        <a href="assets\img\AWS Certified Cloud Practitioner certificate.jpg" target="_blank">
+                            <img style="width: 25%;" src="assets\img\AWS Certified Cloud Practitioner certificate.jpg" alt="Certificate validation number:d5464f710e764973a69e36820114a1d8; Validate at https://aws.amazon.com/verification">
+                        </a>
+                    </p>
+                </div>
+                <div class="certificate">
+                    <p>Accenture Baltic DevOps deep dive and Cloud</p>
+                    <p>
+                        <a href="assets\img\DevOps_accenture.jpg" target="_blank">
+                            <img style="width: 25%;" src="assets\img\DevOps_accenture.jpg" alt="DevOps deep dive and Cloud Nr. DIKS-22-189">
+                        </a>
+                    </p>
+                </div>
+                <div class="certificate">
+                    <p>EU-LV programm DevOps best practices</p>
+                    <p>
+                        <a href="assets\img\DevOps_Fita.jpg" target="_blank">
+                            <img style="width: 10%;" src="assets\img\DevOps_Fita.jpg" alt="fita.lv DevOps best practices certificate Nr.:003980">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p style="margin: 0; margin-left: 5%;">Don`t give up on the way of your dream!</p>
+        </footer>
+    </body>
+</html>
