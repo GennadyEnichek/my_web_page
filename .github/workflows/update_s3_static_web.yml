@@ -5,10 +5,10 @@ env:
   S3_BUCKET_NAME: my-personal-web-325
 
 on:
-  #  push:
-  #    branches:
-  #      - main
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+  # workflow_dispatch:
 
 jobs:
   update_s3:
