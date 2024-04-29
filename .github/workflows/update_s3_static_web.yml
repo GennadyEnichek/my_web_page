@@ -31,4 +31,7 @@ jobs:
       - name: Add files to s3
         run: |
           ls -l
-          aws s3 mv s3://${{ env.S3_BUCKET_NAME }}/index.html
+          aws s3 mv ./index.html s3://${{ env.S3_BUCKET_NAME }}/index.html
+          aws s3 mv ./error.html s3://${{ env.S3_BUCKET_NAME }}/error.html
+          aws s3 mv ./assets s3://${{ env.S3_BUCKET_NAME }}/assets --recursive
+          ls -l
