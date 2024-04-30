@@ -5,10 +5,7 @@ env:
   S3_BUCKET_NAME: gj85.eu
 
 on:
-  push:
-    branches:
-      - main
-  # workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   update_s3:
@@ -26,11 +23,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Delete files from s3
-        run: aws s3 rm s3://${{ env.S3_BUCKET_NAME }} --recursive --exclude "error.html"
+        run: aws s3 rm s3://${{ env.S3_BUCKET_NAME }}/error.html
 
       - name: Add files to s3
         run: |
           ls -l
-          aws s3 mv ./index.html s3://${{ env.S3_BUCKET_NAME }}/index.html
-          aws s3 mv ./assets s3://${{ env.S3_BUCKET_NAME }}/assets --recursive
+          aws s3 mv ./error.html s3://${{ env.S3_BUCKET_NAME }}/error.html
           ls -l
