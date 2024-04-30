@@ -2,7 +2,7 @@ name: update_my_static_web_on_aws_s3
 
 env:
   AWS_REGION: eu-north-1
-  S3_BUCKET_NAME: my-personal-web-325
+  S3_BUCKET_NAME: gj85.eu
 
 on:
   push:
