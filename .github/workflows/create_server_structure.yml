@@ -23,18 +23,18 @@ jobs:
 
       - name: Build host bucket
         run: |
-          cd ~/server_structure_terraform/s3_gj85.eu
-          terragorm init
+          terraform init
           terraform apply -auto-approve
+        working-directory: ./server_structure_terraform/s3_gj85.eu
 
       - name: Build www subdomain bucket
         run: |
-          cd ~/server_structure_terraform/s3_www.gj85.eu
-          terragorm init
+          terraform init
           terraform apply -auto-approve
+        working-directory: ./server_structure_terraform/s3_www.gj85.eu
 
       - name: Create Route53 zone and records
         run: |
-          cd ~/server_structure_terraform/rout53
-          terragorm init
+          terraform init
           terraform apply -auto-approve
+        working-directory: ./server_structure_terraform/rout53
