@@ -1,0 +1,40 @@
+name: create_website_structure
+
+env:
+  AWS_REGION: eu-north-1
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create_structure:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configure AWS
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Clone repo into runner
+        uses: actions/checkout@v3
+
+      - name: Build host bucket
+        run: |
+          cd ~/server_structure_terraform/s3_gj85.eu
+          terragorm init
+          terraform apply -auto-approve
+
+      - name: Build www subdomain bucket
+        run: |
+          cd ~/server_structure_terraform/s3_www.gj85.eu
+          terragorm init
+          terraform apply -auto-approve
+
+      - name: Create Route53 zone and records
+        run: |
+          cd ~/server_structure_terraform/rout53
+          terragorm init
+          terraform apply -auto-approve
