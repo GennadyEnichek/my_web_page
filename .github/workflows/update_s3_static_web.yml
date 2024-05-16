@@ -5,10 +5,10 @@ env:
   S3_BUCKET_NAME: gj85.eu
 
 on:
-  push:
-    branches:
-      - main
-  # workflow_dispatch:
+#  push:
+#    branches:
+#      - main
+   workflow_dispatch:
 
 jobs:
   update_s3:
