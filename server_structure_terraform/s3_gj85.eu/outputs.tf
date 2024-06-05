@@ -1,24 +1,20 @@
-output "host-bucket-id" {
-  value       = aws_s3_bucket.host-bucket.id
-  description = "Provide hosted bucket ID"
+output "source_bucket_id" {
+  value       = aws_s3_bucket.website_source.id
+  description = "Output of website source bucket ID"
 }
 
-output "host-bucket-arn" {
-  value       = aws_s3_bucket.host-bucket.arn
-  description = "Provide host bucket amazon resource name (ARN)"
+output "source_bucket_arn" {
+  value       = aws_s3_bucket.website_source.arn
+  description = "Output of website source bucket amazon resource name (ARN)"
 }
 
-output "host-bucket-domain" {
-  value       = aws_s3_bucket_website_configuration.host-bucket-website.website_domain
-  description = "Provide host bucket website domain name for Rout53 alias creation "
+output "source_bucket_domain" {
+  value       = aws_s3_bucket.website_source.bucket_domain_name
+  description = "Output of website source bucket domain name "
 }
 
-output "host-bucket-endpoint" {
-  value       = aws_s3_bucket_website_configuration.host-bucket-website.website_endpoint
-  description = "Provide host bucket endpoint"
+output "source_bucket_regional_domain" {
+  value       = aws_s3_bucket.website_source.bucket_regional_domain_name
+  description = "Output ofwebsite source bucket regional domain name as origin source for CloudFront"
 }
 
-output "host-bucket-hosted-zone-id" {
-  value       = aws_s3_bucket.host-bucket.hosted_zone_id
-  description = "Provide host bucket endpoint"
-}

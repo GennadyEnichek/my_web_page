@@ -21,52 +21,59 @@ terraform {
   }
 }
 
-data "terraform_remote_state" "host-data" {
+locals {
+  domain_name   = "gj85.eu"
+  www_subdomain = "www.gj85.eu"
+}
+
+# Cloudfront distribution should be created before Rout 53 zone
+data "terraform_remote_state" "website_distribution" {
   backend = "s3"
   config = {
     bucket = "gj-terraform-state-s3-524"
-    key    = "my-web-card/host-bucket/terraform.tfstate"
+    key    = "my-web-card/website-cloudfront_distribution/terraform.tfstate"
     region = "eu-central-1"
   }
 }
 
-data "terraform_remote_state" "www-subdomain-data" {
-  backend = "s3"
-  config = {
-    bucket = "gj-terraform-state-s3-524"
-    key    = "my-web-card/www-bucket/terraform.tfstate"
-    region = "eu-central-1"
-  }
+# Rout 53 zone already created with AWS console. So it is imported.
+import {
+  to = aws_route53_zone.my_web_card_zone
+  id = "Z045110612PRK7QWKGG1D"
 }
 
 # Create AWS hosted zone. Zone name should be the same as domain name
-resource "aws_route53_zone" "my-card-zone" {
-  name       = var.hosted-zone-name
-  depends_on = [data.terraform_remote_state.host-data, data.terraform_remote_state.www-subdomain-data]
+resource "aws_route53_zone" "my_web_card_zone" {
+  name    = local.domain_name
+  comment = "The hosted zone used for manage my_web_card domain gj85.eu"
 }
 
-# Alias record for host domain
-resource "aws_route53_record" "host-record" {
-  zone_id = aws_route53_zone.my-card-zone.zone_id
-  name    = var.host-record-name
+# Alias record for main domain
+resource "aws_route53_record" "domain" {
+  zone_id = aws_route53_zone.my_web_card_zone.zone_id
+  name    = local.domain_name
   type    = "A"
 
   alias {
-    name                   = data.terraform_remote_state.host-data.outputs.host-bucket-domain         # host-bucket-domain
-    zone_id                = data.terraform_remote_state.host-data.outputs.host-bucket-hosted-zone-id # host-bucket-hosted-zone-id
+    name                   = data.terraform_remote_state.website_distribution.outputs.my_card_distribution_domain         # domain name of cloudfront distribution
+    zone_id                = data.terraform_remote_state.website_distribution.outputs.my_card_distribution_hosted_zone_id # cloudfront hosted zone id
     evaluate_target_health = true
   }
+
+  depends_on = [data.terraform_remote_state.website_distribution]
 }
 
 # Alias record for www subdomain
-resource "aws_route53_record" "www-record" {
-  zone_id = aws_route53_zone.my-card-zone.zone_id
-  name    = var.www-record-name
+resource "aws_route53_record" "www_subdomain" {
+  zone_id = aws_route53_zone.my_web_card_zone.zone_id
+  name    = local.www_subdomain
   type    = "A"
 
   alias {
-    name                   = data.terraform_remote_state.www-subdomain-data.outputs.www-bucket-domain         # www-bucket-domain
-    zone_id                = data.terraform_remote_state.www-subdomain-data.outputs.www-bucket-hosted-zone-id # www-bucket-hosted-zone-id
+    name                   = data.terraform_remote_state.website_distribution.outputs.my_card_distribution_domain         # www-bucket-domain
+    zone_id                = data.terraform_remote_state.website_distribution.outputs.my_card_distribution_hosted_zone_id # www-bucket-hosted-zone-id
     evaluate_target_health = true
   }
+
+  depends_on = [data.terraform_remote_state.website_distribution]
 }
