@@ -76,7 +76,8 @@
         <hr>
 
         <div class="projects">
-            <h2 style="margin-left: 5%;">My Real Life Project <span style="font-size: medium;">(Original text was reviewed with ChatGPT)</span></h2>
+            <h2 style="margin-left: 5%;">My Projects </h2>
+            <h3>Laboratory automation <span style="font-size: medium;">(Original text was reviewed with ChatGPT)</span></h3>
             <p style="text-indent: 1.5em;">
                 <b>Description of the problem.</b> In the field of ventilation, it is common practice to establish defined air volumes for each 
                 area. Specialized units known as VAV dampers are used to regulate airflow. In order to be competitive, manufacturers 
@@ -86,7 +87,7 @@
                 consume considerable time and human resources.
             </p>
             <p style="text-indent: 1.5em;">
-                <b>Decision.</b> A Python program has been developed to automate measurements, thereby freeing operators to perform other daily 
+                <b>Solution.</b> A Python program has been developed to automate measurements, thereby freeing operators to perform other daily 
                 tasks. The program features a Graphical User Interface (GUI) that enables operators to manage PC communication with the stand
                 hardware, control delays between measurement cycles, load measurement programs for automatic execution, and save measurement data 
                 to an Excel file. Additionally, an emergency stop function has been implemented. Communication between the stand hardware and PC 
@@ -96,6 +97,21 @@
                 notifications upon completion of measurements or in the event of errors, thus relieving operators from the need for constant 
                 process monitoring. Considering the existence of multiple laboratory stands, the program is configurable for use with other
                 equipment with the same structure.
+            </p>
+
+            <h3>The web page</h3>
+            <p style="text-indent: 1.5em;">
+                <b>Description of the problem.</b> During mu education process for job field change I met that I need some webpage for 
+                practice deploying and my skill demonstration. On the other hand I needed a personal webpage with my contacts and nutshell
+                experience description.
+            </p>
+            <p style="text-indent: 1.5em;">
+                <b>Solution.</b> The most optimal solution was to create short webpage with necessary information about me and deploy it 
+                in a different ways improving my DevOps skills. The webpage hosted om <i>AWS S3 bucket</i>, distributed with 
+                <i>AWS Cloudfront</i>. The domain name <a href=">https://gj85.eu">https://gj85.eu</a> was purchased from custom provider but 
+                is managed by <i>AWS Rout53</i>. All AWS structure was made by Terraform. You can find more detailed information on 
+                GitHub project repository: <a href="https://github.com/GennadyEnichek/my_web_page" target="_blank">https://github.com/GennadyEnichek/my_web_page</a>
+                AWS structure deploying and static content update are made in automatic way with <i>GitActions</i>.
             </p>
         </div>
 

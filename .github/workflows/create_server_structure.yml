@@ -21,20 +21,20 @@ jobs:
       - name: Clone repo into runner
         uses: actions/checkout@v3
 
-      - name: Build host bucket
-        run: |
-          terraform init
-          terraform apply -auto-approve
+      - name: Build website source bucket
         working-directory: ./server_structure_terraform/s3_gj85.eu
-
-      - name: Build www subdomain bucket
         run: |
           terraform init
           terraform apply -auto-approve
-        working-directory: ./server_structure_terraform/s3_www.gj85.eu
 
-      - name: Create Route53 zone and records
+      - name: Build CloudFront distribution
+        working-directory: ./server_structure_terraform/cloudfront
         run: |
           terraform init
           terraform apply -auto-approve
+
+      - name: Update Route53 zone and records
         working-directory: ./server_structure_terraform/rout53
+        run: |
+          terraform init
+          terraform apply -auto-approve
